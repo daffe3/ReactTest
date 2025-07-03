@@ -19,13 +19,11 @@ export default async function Contact() {
 
   return (
     <main className="flex-grow container mx-auto px-4 py-8">
-
       <h1 className="text-center mb-8 text-3xl sm:text-4xl font-bold text-text-dark">
         {contactPage.title || 'Get in Touch'}
       </h1>
 
       <div className="max-w-md mx-auto bg-white p-5 sm:p-6 rounded-lg shadow-md">
-
         {contactPage.info && (
           <p className="mb-6 text-gray-700 text-center">
             {contactPage.info}
@@ -45,15 +43,14 @@ export default async function Contact() {
         )}
 
         <ul className="list-none p-0 my-6 space-y-4 text-base sm:text-lg">
-
           {contactPage.email && (
             <li className="text-text-dark flex flex-wrap items-baseline justify-start">
-              <div className="flex items-center mr-2"> 
+              <div className="flex items-center mr-2">
                 <i className="fas fa-envelope text-primary-orange text-xl"></i>
                 <span className="font-semibold whitespace-nowrap ml-2">Email:</span>
               </div>
-              <a href={`mailto:${contactPage.email}`} className="text-accent-link hover:underline break-all flex-grow">
-                {contactPage.email}
+              <a href={`mailto:${contactPage.email}`} className="text-accent-link hover:underline">
+                Send Email
               </a>
             </li>
           )}
@@ -63,8 +60,8 @@ export default async function Contact() {
                 <i className="fab fa-linkedin text-primary-orange text-xl"></i>
                 <span className="font-semibold whitespace-nowrap ml-2">LinkedIn:</span>
               </div>
-              <a href={contactPage.link} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline break-all flex-grow">
-                {contactPage.link}
+              <a href={contactPage.link} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline">
+                Connect on LinkedIn
               </a>
             </li>
           )}
@@ -74,8 +71,8 @@ export default async function Contact() {
                 <i className="fab fa-github text-primary-orange text-xl"></i>
                 <span className="font-semibold whitespace-nowrap ml-2">GitHub:</span>
               </div>
-              <a href={contactPage.github} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline break-all flex-grow">
-                {contactPage.github}
+              <a href={contactPage.github} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline">
+                View GitHub Profile
               </a>
             </li>
           )}
@@ -85,8 +82,8 @@ export default async function Contact() {
                 <i className="fas fa-phone text-primary-orange text-xl"></i>
                 <span className="font-semibold whitespace-nowrap ml-2">Phone:</span>
               </div>
-              <a href={`tel:${contactPage.number}`} className="text-accent-link hover:underline break-all flex-grow">
-                {contactPage.number}
+              <a href={`tel:${contactPage.number}`} className="text-accent-link hover:underline">
+                Call Me
               </a>
             </li>
           )}
