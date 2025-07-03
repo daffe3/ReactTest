@@ -49,8 +49,8 @@ export default async function Contact() {
                 <i className="fas fa-envelope text-primary-orange text-xl"></i>
                 <span className="font-semibold whitespace-nowrap ml-2">Email:</span>
               </div>
-              <a href={`mailto:${contactPage.email}`} className="text-accent-link hover:underline">
-                Send Email
+              <a href={`mailto:${contactPage.email}`} className="text-accent-link hover:underline break-all flex-grow">
+                {contactPage.email}
               </a>
             </li>
           )}
@@ -82,8 +82,8 @@ export default async function Contact() {
                 <i className="fas fa-phone text-primary-orange text-xl"></i>
                 <span className="font-semibold whitespace-nowrap ml-2">Phone:</span>
               </div>
-              <a href={`tel:${contactPage.number}`} className="text-accent-link hover:underline">
-                Call Me
+              <a href={`tel:${contactPage.number}`} className="text-accent-link hover:underline break-all flex-grow">
+                {contactPage.number}
               </a>
             </li>
           )}
