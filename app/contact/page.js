@@ -1,7 +1,6 @@
 import client from '../lib/contentful';
 import Image from 'next/image';
 
-
 export default async function Contact() {
   const res = await client.getEntries({
     content_type: 'contact',
@@ -20,9 +19,10 @@ export default async function Contact() {
 
   return (
     <main className="flex-grow container mx-auto px-4 py-8">
-      <h1 className="text-center mb-8 text-4xl font-bold text-text-dark">{contactPage.title || 'Get in Touch'}</h1>
-
-      <div className="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md text-lg text-center">
+      <h1 className="text-center mb-8 text-3xl sm:text-4xl font-bold text-text-dark">
+        {contactPage.title || 'Get in Touch'}
+      </h1>
+      <div className="max-w-md mx-auto bg-white p-5 sm:p-6 rounded-lg shadow-md text-base sm:text-lg text-center">
         {contactPage.info && (
           <p className="mb-6 text-gray-700">
             {contactPage.info}
