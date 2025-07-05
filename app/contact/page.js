@@ -1,4 +1,4 @@
-import client from '../lib/contentful';
+import client from '../lib/contentful'; 
 import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'; 
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'; 
@@ -80,7 +80,7 @@ export default async function Contact() {
               <i className="fab fa-linkedin text-primary-orange text-xl mr-3"></i> 
               <span className="font-semibold">LinkedIn:</span>{' '}
               <a href={contactPage.link} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline ml-2">
-                {contactPage.link}
+                Connect on LinkedIn 
               </a>
             </li>
           )}
@@ -89,7 +89,7 @@ export default async function Contact() {
               <i className="fab fa-github text-primary-orange text-xl mr-3"></i> 
               <span className="font-semibold">GitHub:</span>{' '}
               <a href={contactPage.github} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline ml-2">
-                {contactPage.github}
+                View GitHub Profile 
               </a>
             </li>
           )}
