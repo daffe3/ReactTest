@@ -2,6 +2,7 @@
 
 import React from 'react';
 import dynamic from 'next/dynamic'; 
+import Image from 'next/image';
 
 const RotatingText = dynamic(() => import('./RotatingText'), { ssr: false }); 
 
@@ -14,9 +15,20 @@ export default function HomePageContent({ homepage, taglines }) {
             {homepage.title} <br/>
             <RotatingText words={taglines} interval={2500} className="text-primary-orange" />
           </h1>
-          <p className="text-lg text-center lg:text-left max-w-lg">
-            {homepage.presentationText}
-          </p>
+        </div>
+
+        <div className="lg:w-1/2 flex justify-center items-center p-4">
+          {homepage.image && homepage.image.fields && homepage.image.fields.file && (
+            <div className="w-full max-w-sm"> 
+              <Image
+                src={`https:${homepage.image.fields.file.url}`}
+                alt={homepage.image.fields.title || "Homepage Image"}
+                width={500} 
+                height={500} 
+                className="rounded-lg shadow-lg object-cover w-full h-auto"
+              />
+            </div>
+          )}
         </div>
       </div>
     </>
