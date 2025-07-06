@@ -67,37 +67,45 @@ export default async function Contact() {
 
         <ul className="list-none p-0 my-6 space-y-4"> 
           {contactPage.email && (
-            <li className="text-text-dark flex items-center justify-center"> 
-              <i className="fas fa-envelope text-primary-orange text-xl mr-3"></i> 
-              <span className="font-semibold">Email:</span>{' '}
-              <a href={`mailto:${contactPage.email}`} className="text-accent-link hover:underline ml-2">
+            <li className="text-text-dark flex flex-col sm:flex-row items-center sm:justify-center">
+              <div className="flex items-center mb-1 sm:mb-0"> 
+                <i className="fas fa-envelope text-primary-orange text-xl mr-3"></i> 
+                <span className="font-semibold">Email:</span>{' '}
+              </div>
+              <a href={`mailto:${contactPage.email}`} className="text-accent-link hover:underline sm:ml-2"> 
                 {contactPage.email}
               </a>
             </li>
           )}
           {contactPage.link && ( 
-            <li className="text-text-dark flex items-center justify-center"> 
-              <i className="fab fa-linkedin text-primary-orange text-xl mr-3"></i> 
-              <span className="font-semibold">LinkedIn:</span>{' '}
-              <a href={contactPage.link} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline ml-2">
+            <li className="text-text-dark flex flex-col sm:flex-row items-center sm:justify-center"> 
+              <div className="flex items-center mb-1 sm:mb-0"> 
+                <i className="fab fa-linkedin text-primary-orange text-xl mr-3"></i> 
+                <span className="font-semibold">LinkedIn:</span>{' '}
+              </div>
+              <a href={contactPage.link} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline sm:ml-2"> 
                 Connect on LinkedIn 
               </a>
             </li>
           )}
           {contactPage.github && ( 
-            <li className="text-text-dark flex items-center justify-center"> 
-              <i className="fab fa-github text-primary-orange text-xl mr-3"></i> 
-              <span className="font-semibold">GitHub:</span>{' '}
-              <a href={contactPage.github} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline ml-2">
+            <li className="text-text-dark flex flex-col sm:flex-row items-center sm:justify-center"> 
+              <div className="flex items-center mb-1 sm:mb-0"> 
+                <i className="fab fa-github text-primary-orange text-xl mr-3"></i> 
+                <span className="font-semibold">GitHub:</span>{' '}
+              </div>
+              <a href={contactPage.github} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline sm:ml-2"> 
                 View GitHub Profile 
               </a>
             </li>
           )}
           {contactPage.number && (
-            <li className="text-text-dark flex items-center justify-center"> 
-              <i className="fas fa-phone text-primary-orange text-xl mr-3"></i> 
-              <span className="font-semibold">Phone:</span>{' '}
-              <a href={`tel:${contactPage.number}`} className="text-accent-link hover:underline ml-2">
+            <li className="text-text-dark flex flex-col sm:flex-row items-center sm:justify-center"> 
+              <div className="flex items-center mb-1 sm:mb-0"> 
+                <i className="fas fa-phone text-primary-orange text-xl mr-3"></i> 
+                <span className="font-semibold">Phone:</span>{' '}
+              </div>
+              <a href={`tel:${contactPage.number}`} className="text-accent-link hover:underline sm:ml-2"> 
                 {contactPage.number}
               </a>
             </li>
