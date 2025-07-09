@@ -34,9 +34,9 @@ export default function Stack({ items = [], itemHeight = 300, gap = 20, classNam
     <>
       <style jsx global>{`
         .stack-container {
-          height: 500px; /* Or a suitable height for your stack */
+          height: 500px; 
           overflow-y: scroll;
-          -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+          -webkit-overflow-scrolling: touch; 
           position: relative;
           border-radius: 12px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -45,48 +45,46 @@ export default function Stack({ items = [], itemHeight = 300, gap = 20, classNam
 
         .stack-item {
           position: sticky;
-          top: 0; /* Items stick to the top as you scroll */
-          width: calc(100% - 40px); /* Adjust for padding */
+          top: 0; 
+          width: calc(100% - 40px);
           margin: 20px;
           background-color: #f0f0f0;
           border-radius: 8px;
           box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
           display: flex;
           flex-direction: column;
-          justify-content: flex-start; /* Align content to the top */
+          justify-content: flex-start; 
           align-items: center;
           padding: 20px;
           box-sizing: border-box;
           transition: transform 0.3s ease-out, opacity 0.3s ease-out;
           transform-origin: top center;
-          z-index: 1; /* Ensure items layer correctly */
-          text-decoration: none; /* Remove underline from Link */
-          color: inherit; /* Inherit text color */
+          z-index: 1;
+          text-decoration: none; 
+          color: inherit;
         }
 
         .stack-item.active {
-          z-index: 2; /* Active item is on top */
-          transform: scale(1.02); /* Slightly larger when active */
+          z-index: 2; 
+          transform: scale(1.02);
         }
 
-        /* Adjust top position based on itemHeight and gap */
         .stack-item:not(:first-child) {
-          margin-top: ${-itemHeight}px; /* Overlap items */
+          margin-top: ${-itemHeight}px; 
         }
 
-        /* Ensure image and text within stack items are visible */
-        .stack-item .item-image-wrapper { /* Added specific class for image wrapper */
+        .stack-item .item-image-wrapper { 
           width: 100%;
-          height: 128px; /* Fixed height for image wrapper */
+          height: 128px; 
           position: relative;
-          margin-bottom: 16px; /* Spacing below image */
+          margin-bottom: 16px; 
         }
         .stack-item .item-image-wrapper img {
           border-radius: 4px;
         }
 
         .stack-item h3 {
-          color: #FF7F50; /* Primary orange for title */
+          color: #FF7F50;
           margin-bottom: 8px;
         }
 
@@ -95,12 +93,12 @@ export default function Stack({ items = [], itemHeight = 300, gap = 20, classNam
           font-size: 0.9rem;
           line-height: 1.4;
           text-align: center;
-          flex-grow: 1; /* Allow description to take available space */
-          overflow: hidden; /* Hide overflow */
+          flex-grow: 1; 
+          overflow: hidden; 
           display: -webkit-box;
-          -webkit-line-clamp: 3; /* Limit to 3 lines */
+          -webkit-line-clamp: 3; 
           -webkit-box-orient: vertical;
-          word-break: break-words; /* Added word-break for long words */
+          word-break: break-words; 
         }
       `}</style>
 

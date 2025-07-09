@@ -20,10 +20,6 @@ export default async function About() {
     );
   }
 
-  console.log('--- About Me Data Received ---');
-  console.log(JSON.stringify(aboutMe, null, 2)); 
-  console.log('--- End About Me Data ---');
-
   const richTextOptions = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <p className="mb-4 text-gray-700 break-words">{children}</p>,
@@ -54,11 +50,10 @@ export default async function About() {
               <Image
                 src={`https:${aboutMe.image.fields.file.url}`}
                 alt={aboutMe.image.fields.title || 'Profile Picture'}
-                width={180} n
+                width={180} 
                 height={180}
                 className="rounded-full shadow-lg object-cover mb-4"
               />
-              <p className="text-xl font-semibold text-text-dark break-words">{aboutMe.title || 'Your Name'}</p> 
             </div>
           )}
 

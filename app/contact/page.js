@@ -18,12 +18,7 @@ export default async function Contact() {
       </main>
     );
   }
-
-  console.log('--- Debugging contactPage.info ---');
-  console.log('Type of contactPage.info:', typeof contactPage.info);
-  console.log('Content of contactPage.info:', JSON.stringify(contactPage.info, null, 2));
-  console.log('--- End Debugging contactPage.info ---');
-
+  
   const richTextOptions = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <p className="mb-4">{children}</p>,
