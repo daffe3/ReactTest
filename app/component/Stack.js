@@ -32,7 +32,6 @@ export default function Stack({ items = [], itemHeight = 300, gap = 20, classNam
 
   return (
     <>
-
       <style jsx global>{`
         .stack-container {
           height: 500px; /* Or a suitable height for your stack */
@@ -101,36 +100,39 @@ export default function Stack({ items = [], itemHeight = 300, gap = 20, classNam
           display: -webkit-box;
           -webkit-line-clamp: 3; /* Limit to 3 lines */
           -webkit-box-orient: vertical;
+          word-break: break-words; /* Added word-break for long words */
         }
       `}</style>
 
       <div ref={containerRef} className={`stack-container ${className}`}>
         {items.map((item, index) => (
-          <Link href={item.link} key={item.id} className="block w-full"> 
-            <div
-              className={`stack-item ${activeItem === index ? 'active' : ''}`}
-              style={{
-                height: itemHeight,
-                marginBottom: index < items.length - 1 ? gap : 0,
-                zIndex: items.length - index, 
-                backgroundColor: index % 2 === 0 ? '#F5F5DC' : '#FFFFFF', 
-                color: '#333333',
-              }}
-            >
-              <h3 className="text-xl font-bold mb-2 text-primary-orange">{item.title}</h3>
-              {item.image && (
-                <div className="relative item-image-wrapper"> 
-                  <Image
-                    src={`https:${item.image}`} 
-                    alt={item.title}
-                    fill 
-                    style={{ objectFit: 'cover' }}
-                    className="rounded-md"
-                  />
-                </div>
-              )}
-              <p className="text-sm text-center line-clamp-3">{item.description}</p>
-            </div>
+          <Link href={item.link} key={item.id} legacyBehavior>
+            <a className="block w-full"> 
+              <div
+                className={`stack-item ${activeItem === index ? 'active' : ''}`}
+                style={{
+                  height: itemHeight,
+                  marginBottom: index < items.length - 1 ? gap : 0,
+                  zIndex: items.length - index, 
+                  backgroundColor: index % 2 === 0 ? '#F5F5DC' : '#FFFFFF', 
+                  color: '#333333',
+                }}
+              >
+                <h3 className="text-xl font-bold mb-2 text-primary-orange">{item.title}</h3>
+                {item.image && (
+                  <div className="relative item-image-wrapper"> 
+                    <Image
+                      src={`https:${item.image}`} 
+                      alt={item.title}
+                      fill 
+                      style={{ objectFit: 'cover' }} 
+                      className="rounded-md"
+                    />
+                  </div>
+                )}
+                <p className="text-sm text-center line-clamp-3">{item.description}</p>
+              </div>
+            </a>
           </Link>
         ))}
       </div>

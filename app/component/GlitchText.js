@@ -18,12 +18,11 @@ export default function GlitchText({ text = "404 - Page Not Found", className = 
 
   return (
     <>
-
       <style jsx global>{`
         .glitch-container {
-          font-family: 'Arial Black', sans-serif; /* Or a strong, blocky font */
-          font-size: 4rem; /* Adjust as needed */
-          color: #333; /* Default text color */
+          font-family: 'Arial Black', sans-serif; 
+          font-size: 4rem; 
+          color: #333;
           position: relative;
           text-align: center;
           overflow: hidden;
@@ -33,8 +32,8 @@ export default function GlitchText({ text = "404 - Page Not Found", className = 
         .glitch-text {
           position: relative;
           display: inline-block;
-          color: #FF7F50; /* Primary orange for the text */
-          text-shadow: 0.05em 0 0 #FF6347, -0.025em -0.05em 0 #F5F5DC, 0.025em 0.05em 0 #333333;
+          color: #FF6B6B; 
+          text-shadow: 0.05em 0 0 #4ECDC4, -0.025em -0.05em 0 #F7F7F7, 0.025em 0.05em 0 #333333; 
           animation: glitch 1s infinite;
         }
 
@@ -56,13 +55,13 @@ export default function GlitchText({ text = "404 - Page Not Found", className = 
 
         .glitch-text::before {
           left: 2px;
-          text-shadow: -0.05em -0.025em 0 #FF6347;
+          text-shadow: -0.05em -0.025em 0 #4ECDC4; 
           animation: glitch-skew 0.3s cubic-bezier(.25, .46, .45, .94) both;
         }
 
         .glitch-text::after {
           left: -2px;
-          text-shadow: -0.05em 0.025em 0 #F5F5DC;
+          text-shadow: -0.05em 0.025em 0 #F7F7F7; 
           animation: glitch-skew 0.3s cubic-bezier(.25, .46, .45, .94) reverse both;
         }
 

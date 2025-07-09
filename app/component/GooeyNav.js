@@ -13,7 +13,7 @@ export default function GooeyNav({ links = [], className = "" }) {
         <defs>
           <filter id="gooey-orange">
             <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 18 -7" result="goo" />
             <feBlend in="SourceGraphic" in2="goo" />
           </filter>
         </defs>
@@ -21,8 +21,11 @@ export default function GooeyNav({ links = [], className = "" }) {
 
       <nav className={`bg-text-dark p-4 shadow-lg ${className}`} style={{ filter: 'url(#gooey-orange)' }}>
         <div className="container mx-auto flex justify-between items-center">
-          <Link href="/" className="text-xl font-bold text-bg-light hover:text-primary-orange transition-colors duration-200">
-              David Arvidsson
+
+          <Link href="/" legacyBehavior>
+            <a className="text-xl font-bold text-bg-light hover:text-primary-orange transition-colors duration-200">
+                David Arvidsson
+            </a>
           </Link>
 
           <button
@@ -40,14 +43,18 @@ export default function GooeyNav({ links = [], className = "" }) {
               <Link
                 key={link.id}
                 href={link.href}
-                className={`relative text-bg-light hover:text-primary-orange transition-colors duration-200 py-2 px-4 rounded-full ${activeLink === link.id ? 'active' : ''}`}
-                onMouseEnter={() => setActiveLink(link.id)}
-                onMouseLeave={() => setActiveLink(null)}
+                legacyBehavior 
               >
-                {link.label}
-                {activeLink === link.id && (
-                  <span className="absolute inset-0 bg-primary-orange rounded-full -z-10 animate-gooey-splash"></span>
-                )}
+                <a
+                  className={`relative text-bg-light hover:text-primary-orange transition-colors duration-200 py-2 px-4 rounded-full ${activeLink === link.id ? 'active' : ''}`}
+                  onMouseEnter={() => setActiveLink(link.id)}
+                  onMouseLeave={() => setActiveLink(null)}
+                >
+                  {link.label}
+                  {activeLink === link.id && (
+                    <span className="absolute inset-0 bg-primary-orange rounded-full -z-10 animate-gooey-splash"></span>
+                  )}
+                </a>
               </Link>
             ))}
           </div>
@@ -59,10 +66,14 @@ export default function GooeyNav({ links = [], className = "" }) {
               <Link
                 key={link.id}
                 href={link.href}
-                className="block py-2 px-4 text-bg-light hover:bg-gray-700 hover:text-primary-orange transition-colors duration-200"
-                onClick={() => setIsMobileMenuOpen(false)} 
+                legacyBehavior 
               >
-                {link.label}
+                <a
+                  className="block py-2 px-4 text-bg-light hover:bg-gray-700 hover:text-primary-orange transition-colors duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)} 
+                >
+                  {link.label}
+                </a>
               </Link>
             ))}
           </div>
