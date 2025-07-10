@@ -23,12 +23,13 @@ export default function RootLayout({ children }) {
           referrerPolicy="no-referrer"
         />
       </head>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen"> 
         <GooeyNav links={navLinks} />
-        <div className="flex-grow">
-          {children}
+        <div className="flex-grow relative"> 
+          {children} 
         </div>
-        <Footer />
+
+        <Footer className="relative z-10" /> 
       </body>
     </html>
   );

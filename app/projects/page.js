@@ -1,6 +1,4 @@
 import client from '../lib/contentful'; 
-import Link from 'next/link';
-import Image from 'next/image';
 import ProjectStackDisplay from '../component/ProjectStackDisplay'; 
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'; 
 
@@ -30,8 +28,13 @@ export default async function Projects() {
 
   return (
     <main className="flex-grow container mx-auto px-4 py-8">
-      <h1 className="text-center mb-8">My Projects</h1>
-      <ProjectStackDisplay stackItems={stackItems} />
+      <h1 className="text-center mb-8 text-text-dark">My Projects</h1> 
+      <p className="text-center text-xl mb-8 text-gray-700">
+        This is my code space, where I showcase a selection of my projects.
+      </p>
+      <div className="max-w-3xl mx-auto">
+        <ProjectStackDisplay stackItems={stackItems} />
+      </div>
 
     </main>
   );

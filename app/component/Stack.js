@@ -46,7 +46,7 @@ export default function Stack({ items = [], itemHeight = 300, gap = 20, classNam
         .stack-item {
           position: sticky;
           top: 0; 
-          width: calc(100% - 40px);
+          width: calc(100% - 40px); 
           margin: 20px;
           background-color: #f0f0f0;
           border-radius: 8px;
@@ -61,7 +61,7 @@ export default function Stack({ items = [], itemHeight = 300, gap = 20, classNam
           transform-origin: top center;
           z-index: 1;
           text-decoration: none; 
-          color: inherit;
+          color: inherit; 
         }
 
         .stack-item.active {
@@ -84,7 +84,6 @@ export default function Stack({ items = [], itemHeight = 300, gap = 20, classNam
         }
 
         .stack-item h3 {
-          color: #FF7F50;
           margin-bottom: 8px;
         }
 
@@ -112,11 +111,11 @@ export default function Stack({ items = [], itemHeight = 300, gap = 20, classNam
                   height: itemHeight,
                   marginBottom: index < items.length - 1 ? gap : 0,
                   zIndex: items.length - index, 
-                  backgroundColor: index % 2 === 0 ? '#F5F5DC' : '#FFFFFF', 
+                  backgroundColor: index % 2 === 0 ? '#F7F7F7' : '#FFFFFF', 
                   color: '#333333',
                 }}
               >
-                <h3 className="text-xl font-bold mb-2 text-primary-orange">{item.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-primary-orange">{item.title}</h3> 
                 {item.image && (
                   <div className="relative item-image-wrapper"> 
                     <Image
