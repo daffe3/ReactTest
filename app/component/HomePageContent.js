@@ -13,11 +13,11 @@ export default function HomePageContent({ homepage, taglines }) {
       <style jsx global>{`
         @keyframes float {
           0% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); } /* Moves up 8px */
+          50% { transform: translateY(-8px); } 
           100% { transform: translateY(0px); }
         }
         .animate-float {
-          animation: float 3s ease-in-out infinite; /* 3 seconds duration, ease-in-out timing, infinite loop */
+          animation: float 3s ease-in-out infinite; 
         }
       `}</style>
 

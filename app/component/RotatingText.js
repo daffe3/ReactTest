@@ -25,7 +25,7 @@ export default function RotatingText({ words = ["Creative", "Innovative", "Passi
       <style jsx global>{`
         .rotating-text-container {
           display: inline-block;
-          min-width: 150px; /* Adjust based on your longest word */
+          min-width: 150px; 
           text-align: center;
         }
         .rotating-text {
