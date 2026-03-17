@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 
 export default function Footer() {
@@ -116,7 +118,7 @@ export default function Footer() {
                 <span className="footer-logo-dot" />
                 David Arvidsson
               </Link>
-              <p className="footer-tagline">Frontend Developer · Web Innovator</p>
+              <p className="footer-tagline">Bygger snabba, tillgängliga webbupplevelser · Göteborg</p>
             </div>
 
             {/* Nav links */}
@@ -132,10 +134,8 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               {/* LinkedIn */}
               <a
-                href="#"
+                href="https://www.linkedin.com/in/david-arvidsson-624412168/"
                 target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
                 className="footer-social"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -144,7 +144,7 @@ export default function Footer() {
               </a>
               {/* GitHub */}
               <a
-                href="#"
+                href="https://github.com/daffe3"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
