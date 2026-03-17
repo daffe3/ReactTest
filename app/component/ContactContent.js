@@ -273,13 +273,13 @@ export default function ContactContent({ contactPage }) {
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
-              Kontakt
+              Contact
             </div>
             <h1 className="contact-header-title">
               {contactPage.title || 'Get in Touch'}
             </h1>
             <p className="contact-header-sub">
-              Alltid öppen för nya möjligheter, samarbeten eller ett trevligt samtal med andra utvecklare.
+              Always open to discussing new opportunities, collaborations, or simply connecting with fellow developers.
             </p>
           </div>
         </div>
@@ -289,8 +289,8 @@ export default function ContactContent({ contactPage }) {
 
           {/* Links card */}
           <div className="contact-info-card">
-            <span className="contact-card-label">Kontaktvägar</span>
-            <h2 className="contact-card-title">Hör gärna av dig!</h2>
+            <span className="contact-card-label">Get in touch</span>
+            <h2 className="contact-card-title">Feel free to reach out!</h2>
 
             {contactPage.info && typeof contactPage.info === 'object' && (
               <div className="mb-4 text-sm">
@@ -332,13 +332,13 @@ export default function ContactContent({ contactPage }) {
 
             <div className="contact-info-card" style={{ animationDelay: '0.5s' }}>
               <span className="contact-card-label">Status</span>
-              <h2 className="contact-card-title" style={{ fontSize: '1.1rem' }}>Tillgänglig för uppdrag</h2>
+              <h2 className="contact-card-title" style={{ fontSize: '1.1rem' }}>Available for opportunities</h2>
               <p style={{ fontSize: '0.88rem', color: '#888', lineHeight: 1.65 }}>
-                Jag söker aktivt min första tjänst som frontend-utvecklare. Tveka inte att höra av dig om du har ett projekt eller en roll som matchar min profil!
+                I'm actively looking for my first role as a frontend developer. Don't hesitate to reach out if you have a project or position that matches my profile!
               </p>
               <div className="contact-availability">
                 <span className="contact-availability-dot" />
-                Öppen för nya möjligheter
+                Open to new opportunities
               </div>
             </div>
           </div>

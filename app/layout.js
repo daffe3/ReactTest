@@ -8,21 +8,21 @@ export const metadata = {
     template: '%s | David Arvidsson',
   },
   description:
-    'Portfolio för David Arvidsson — nyutexaminerad frontend-utvecklare från ITHS Göteborg, specialiserad på React, TypeScript och modern webbutveckling.',
-  keywords: ['frontend', 'developer', 'React', 'TypeScript', 'Svelte', 'Next.js', 'portfolio', 'webbutvecklare', 'Göteborg', 'David Arvidsson'],
+    'Portfolio of David Arvidsson — recently graduated frontend developer from ITHS Gothenburg, specializing in React, TypeScript and modern web development.',
+  keywords: ['frontend', 'developer', 'React', 'TypeScript', 'Svelte', 'Next.js', 'portfolio', 'web developer', 'Gothenburg', 'David Arvidsson'],
   authors: [{ name: 'David Arvidsson' }],
   creator: 'David Arvidsson',
   openGraph: {
     type: 'website',
-    locale: 'sv_SE',
-    url: 'https://davidarvidsson.se', // ← byt till din faktiska domän
+    locale: 'en_US',
+    url: 'https://david-portfolio-ruby-sigma.vercel.app',
     siteName: 'David Arvidsson',
     title: 'David Arvidsson — Frontend Developer',
     description:
-      'Portfolio för David Arvidsson — nyutexaminerad frontend-utvecklare från ITHS Göteborg, specialiserad på React, TypeScript och modern webbutveckling.',
+      'Portfolio of David Arvidsson — recently graduated frontend developer from ITHS Gothenburg, specializing in React, TypeScript and modern web development.',
     images: [
       {
-        url: '/og-image.png', // ← lägg till en 1200×630px bild i /public
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'David Arvidsson — Frontend Developer',
@@ -33,7 +33,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'David Arvidsson — Frontend Developer',
     description:
-      'Portfolio för David Arvidsson — nyutexaminerad frontend-utvecklare från ITHS Göteborg, specialiserad på React, TypeScript och modern webbutveckling.',
+      'Portfolio of David Arvidsson — recently graduated frontend developer from ITHS Gothenburg, specializing in React, TypeScript and modern web development.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
   ];
 
   return (
-    <html lang="sv">
+    <html lang="en">
       <head>
         <link rel="icon" href="/icon.png" type="image/png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />

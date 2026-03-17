@@ -3,7 +3,7 @@ import AboutContent from '../component/AboutContent';
 
 export const metadata = {
   title: 'About Me',
-  description: 'Lär känna David Arvidsson — nyutexaminerad frontend-utvecklare från ITHS Göteborg, specialiserad på React, TypeScript och modern webbutveckling.',
+  description: 'Get to know David Arvidsson — recently graduated frontend developer from ITHS Gothenburg, specializing in React, TypeScript and modern web development.',
 };
 
 export default async function About() {

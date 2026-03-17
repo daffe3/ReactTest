@@ -159,7 +159,7 @@ export default function Stack({ items = [], className = "" }) {
               )}
               <div className="project-card-footer">
                 <span className="project-card-cta">
-                  Se projekt
+                  View project
                   <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                     <path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>

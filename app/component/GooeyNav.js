@@ -224,7 +224,7 @@ export default function GooeyNav({ links = [], className = "" }) {
           <button
             className={`nav-hamburger md:hidden ${menuOpen ? 'open' : ''}`}
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Öppna meny"
+            aria-label="Open menu"
             aria-expanded={menuOpen}
           >
             <span className="nav-bar" />
@@ -241,7 +241,7 @@ export default function GooeyNav({ links = [], className = "" }) {
             <span className="nav-logo-pill">DA</span>
             David Arvidsson
           </Link>
-          <button className="nav-drawer-close" onClick={() => setMenuOpen(false)} aria-label="Stäng meny">
+          <button className="nav-drawer-close" onClick={() => setMenuOpen(false)} aria-label="Close menu">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path d="M2 2l14 14M16 2L2 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
             </svg>
@@ -265,7 +265,7 @@ export default function GooeyNav({ links = [], className = "" }) {
         </div>
 
         <div className="nav-drawer-footer">
-          David Arvidsson · Frontend Developer · Göteborg
+          David Arvidsson · Frontend Developer · Gothenburg, Sweden
         </div>
       </div>
     </>

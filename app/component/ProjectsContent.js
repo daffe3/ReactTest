@@ -226,9 +226,9 @@ export default function ProjectsContent({ projects = [] }) {
               </svg>
               Portfolio
             </div>
-            <h1 className="projects-header-title">Mina projekt</h1>
+            <h1 className="projects-header-title">My Projects</h1>
             <p className="projects-header-sub">
-              Ett urval av vad jag byggt — från API-integrationer till fullstackapplikationer.
+              A selection of what I've built — from API integrations to full-stack applications.
             </p>
           </div>
         </div>
@@ -236,7 +236,7 @@ export default function ProjectsContent({ projects = [] }) {
         {/* Grid */}
         <div className="container mx-auto px-6 py-12 max-w-6xl">
           {projects.length === 0 ? (
-            <div className="projects-empty">Inga projekt hittades.</div>
+            <div className="projects-empty">No projects found.</div>
           ) : (
             <div className="projects-grid">
               {projects.map((project, index) => (
@@ -285,7 +285,7 @@ export default function ProjectsContent({ projects = [] }) {
 
                     <div className="pc-footer">
                       <span className="pc-cta">
-                        Se projekt
+                        View project
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                           <path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>

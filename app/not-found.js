@@ -152,21 +152,21 @@ export default function NotFound() {
         <div className="nf-enter" style={{ animationDelay: '0.1s' }}>
           <div className="nf-badge">
             <span className="nf-badge-dot" />
-            Sidan hittades inte
+            Page not found
           </div>
         </div>
 
         <h1 className="nf-headline nf-enter" style={{ animationDelay: '0.2s' }}>
-          Hoppsan, den här sidan existerar inte!
+          Oops, this page doesn't exist!
         </h1>
 
         <p className="nf-sub nf-enter" style={{ animationDelay: '0.3s' }}>
-          Sidan du letar efter kan ha flyttats, tagits bort eller så var länken felaktig. Gå tillbaka till startsidan så hjälper jag dig rätt.
+          The page you're looking for may have been moved, deleted, or the link was incorrect. Head back to the homepage and I'll get you on track.
         </p>
 
         <div className="nf-enter" style={{ animationDelay: '0.4s' }}>
           <Link href="/" className="nf-btn">
-            Ta mig hem
+            Take me home
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M3 7.5h9M8 4l3.5 3.5L8 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>

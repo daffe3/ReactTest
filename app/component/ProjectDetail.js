@@ -176,7 +176,7 @@ export default function ProjectDetail({ project }) {
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M9 11L5 7l4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          Tillbaka till projekt
+          Back to projects
         </button>
 
         <h1 className="pd-title mb-9">{project.titel}</h1>
@@ -209,7 +209,7 @@ export default function ProjectDetail({ project }) {
             )}
             {project.technologiesUsed?.length > 0 && (
               <div className="pd-card">
-                <p className="pd-section-label mb-3">Teknologier</p>
+                <p className="pd-section-label mb-3">Technologies</p>
                 <div className="flex flex-wrap gap-2">
                   {project.technologiesUsed.map((tech) => (
                     <span key={tech} className="pd-tech-badge">{tech}</span>
@@ -225,7 +225,7 @@ export default function ProjectDetail({ project }) {
         {project.images?.length > 0 && (
           <>
             <div className="flex items-center gap-4 mb-5 mt-4">
-              <p className="pd-section-label">Galleri</p>
+              <p className="pd-section-label">Gallery</p>
               <div className="flex-grow h-px bg-gray-100" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

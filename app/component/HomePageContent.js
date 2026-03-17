@@ -172,7 +172,7 @@ export default function HomePageContent({ homepage, taglines }) {
 
               <div className="hero-badge">
                 <span className="hero-badge-dot" />
-                Frontend Developer · Göteborg
+                Frontend Developer · Gothenburg, Sweden
               </div>
 
               <h1 className="hero-title">
@@ -189,18 +189,18 @@ export default function HomePageContent({ homepage, taglines }) {
 
               <p className="hero-desc">
                 {homepage.description ||
-                  'Nyutexaminerad frontend-utvecklare från ITHS Göteborg, specialiserad på React och TypeScript. Jag bygger snabba, tillgängliga webbupplevelser med fokus på ren kod och bra UX.'}
+                  'Recently graduated frontend developer from ITHS Gothenburg, specializing in React and TypeScript. I build fast, accessible web experiences with a focus on clean code and great UX.'}
               </p>
 
               <div className="hero-buttons">
                 <Link href="/projects" className="btn-primary">
-                  Se mina projekt
+                  View my projects
                   <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
                     <path d="M3 7.5h9M8 4l3.5 3.5L8 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </Link>
                 <Link href="/contact" className="btn-secondary">
-                  Kontakta mig
+                  Contact me
                 </Link>
               </div>
             </div>

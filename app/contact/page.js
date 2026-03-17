@@ -3,7 +3,7 @@ import ContactContent from '../component/ContactContent';
 
 export const metadata = {
   title: 'Contact',
-  description: 'Kontakta David Arvidsson — frontend-utvecklare i Göteborg.',
+  description: 'Get in touch with David Arvidsson — frontend developer based in Gothenburg, Sweden.',
 };
 
 export default async function Contact() {

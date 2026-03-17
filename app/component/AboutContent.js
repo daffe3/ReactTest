@@ -196,8 +196,8 @@ export default function AboutContent({ aboutMe }) {
 
               <div className="w-full space-y-3 mb-5">
                 {[
-                  { icon: '📍', label: 'Göteborg, Sverige' },
-                  { icon: '💼', label: 'Söker första tjänst' },
+                  { icon: '📍', label: 'Gothenburg, Sweden' },
+                  { icon: '💼', label: 'Looking for first role' },
                   { icon: '⚡', label: 'React · TypeScript · Svelte' },
                 ].map(({ icon, label }) => (
                   <div key={label} className="about-info-row">
@@ -208,7 +208,7 @@ export default function AboutContent({ aboutMe }) {
               </div>
 
               <Link href="/contact" className="about-contact-btn">
-                Kontakta mig
+                Contact me
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                   <path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -221,7 +221,7 @@ export default function AboutContent({ aboutMe }) {
             <div className="about-content-card">
               {aboutMe.presentationText
                 ? documentToReactComponents(aboutMe.presentationText, richTextOptions)
-                : <p className="text-gray-400 italic">Ingen beskrivning tillgänglig ännu.</p>
+                : <p className="text-gray-400 italic">No description available yet.</p>
               }
             </div>
           </div>
