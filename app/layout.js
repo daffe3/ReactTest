@@ -8,24 +8,32 @@ export const metadata = {
     template: '%s | David Arvidsson',
   },
   description:
-    'Portfolio för David Arvidsson — frontend-utvecklare med fokus på moderna webbupplevelser, React och Next.js.',
-  keywords: ['frontend', 'developer', 'React', 'Next.js', 'portfolio', 'web', 'David Arvidsson'],
+    'Portfolio för David Arvidsson — nyutexaminerad frontend-utvecklare från ITHS Göteborg, specialiserad på React, TypeScript och modern webbutveckling.',
+  keywords: ['frontend', 'developer', 'React', 'TypeScript', 'Svelte', 'Next.js', 'portfolio', 'webbutvecklare', 'Göteborg', 'David Arvidsson'],
   authors: [{ name: 'David Arvidsson' }],
   creator: 'David Arvidsson',
   openGraph: {
     type: 'website',
     locale: 'sv_SE',
-    url: 'https://david-portfolio-ruby-sigma.vercel.app', 
+    url: 'https://davidarvidsson.se', // ← byt till din faktiska domän
     siteName: 'David Arvidsson',
     title: 'David Arvidsson — Frontend Developer',
     description:
-      'Portfolio för David Arvidsson — frontend-utvecklare med fokus på moderna webbupplevelser, React och Next.js.',
+      'Portfolio för David Arvidsson — nyutexaminerad frontend-utvecklare från ITHS Göteborg, specialiserad på React, TypeScript och modern webbutveckling.',
+    images: [
+      {
+        url: '/og-image.png', // ← lägg till en 1200×630px bild i /public
+        width: 1200,
+        height: 630,
+        alt: 'David Arvidsson — Frontend Developer',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'David Arvidsson — Frontend Developer',
     description:
-      'Portfolio för David Arvidsson — frontend-utvecklare med fokus på moderna webbupplevelser, React och Next.js.',
+      'Portfolio för David Arvidsson — nyutexaminerad frontend-utvecklare från ITHS Göteborg, specialiserad på React, TypeScript och modern webbutveckling.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -46,6 +54,7 @@ export default function RootLayout({ children }) {
     <html lang="sv">
       <head>
         <link rel="icon" href="/icon.png" type="image/png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
         {/* Preconnect for Google Fonts (used by Syne) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,7 +67,7 @@ export default function RootLayout({ children }) {
           referrerPolicy="no-referrer"
         />
       </head>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col" style={{ minHeight: '100dvh' }}>
         <GooeyNav links={navLinks} />
         <div className="flex-grow relative">
           {children}

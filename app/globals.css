@@ -2,28 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  @apply h-full antialiased; 
+html {
+  @apply antialiased;
+  /* Prevents layout shift on mobile when scrollbar appears */
+  overflow-x: hidden;
 }
 
 body {
-  @apply font-sans bg-bg-light text-text-dark; 
+  @apply font-sans bg-bg-light text-text-dark;
+  min-height: 100dvh; /* dvh respects mobile browser chrome */
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-bold text-primary-orange mb-4; 
+  @apply font-bold text-primary-orange mb-4;
 }
 
-h1 { @apply text-4xl sm:text-5xl; }
-h2 { @apply text-3xl sm:text-4xl; }
-h3 { @apply text-2xl sm:text-3xl; }
+h1 { @apply text-3xl sm:text-4xl lg:text-5xl; }
+h2 { @apply text-2xl sm:text-3xl lg:text-4xl; }
+h3 { @apply text-xl sm:text-2xl; }
 
 a {
-  @apply text-accent-link hover:underline transition-colors duration-200; 
+  @apply text-accent-link hover:underline transition-colors duration-200;
 }
 
 p {
-  @apply leading-relaxed mb-4; 
+  @apply leading-relaxed mb-4;
 }
 
 ul {
@@ -32,4 +38,11 @@ ul {
 
 li {
   @apply mb-2;
+}
+
+/* Ensure the layout fills properly on all screen sizes */
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
 }
