@@ -223,21 +223,7 @@ export default function HomePageContent({ homepage, taglines }) {
               </Link>
             </div>
 
-            <div className="hero-stats">
-              {[
-                { number: '2',  label: 'Praktikplatser' },
-                { number: '5+', label: 'Projekt' },
-                { number: '8+', label: 'Teknologier' },
-              ].map((stat, i) => (
-                <React.Fragment key={stat.label}>
-                  {i > 0 && <div className="hero-stat-divider" />}
-                  <div className="flex flex-col">
-                    <span className="hero-stat-number">{stat.number}</span>
-                    <span className="hero-stat-label">{stat.label}</span>
-                  </div>
-                </React.Fragment>
-              ))}
-            </div>
+
           </div>
 
           {/* Right: image */}
