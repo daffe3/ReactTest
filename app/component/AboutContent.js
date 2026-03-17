@@ -169,7 +169,7 @@ export default function AboutContent({ aboutMe }) {
       <main className="about-page flex-grow container mx-auto px-4 py-12 max-w-5xl">
 
         <div className="about-enter mb-10 text-center">
-          <span className="about-section-label">Portfolio</span>
+          <span className="about-section-label">Info</span>
           <h1 className="about-page-title">{aboutMe.title || 'About Me'}</h1>
         </div>
 
