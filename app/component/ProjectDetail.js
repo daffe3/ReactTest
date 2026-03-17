@@ -14,10 +14,7 @@ export default function ProjectDetail({ project }) {
       <main className="flex-grow container mx-auto px-4 py-8 text-center">
         <h1 className="text-4xl font-bold text-primary-orange">Project Data Missing</h1>
         <p className="mt-4 text-lg">Could not load project details.</p>
-        <button
-          onClick={() => router.back()}
-          className="inline-block mt-6 px-6 py-3 bg-primary-orange text-white font-semibold rounded-lg hover:bg-secondary-orange transition-colors duration-200"
-        >
+        <button onClick={() => router.back()} className="inline-block mt-6 px-6 py-3 bg-primary-orange text-white font-semibold rounded-lg hover:bg-secondary-orange transition-colors duration-200">
           Back to Projects
         </button>
       </main>
@@ -26,40 +23,28 @@ export default function ProjectDetail({ project }) {
 
   const richTextOptions = {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node, children) => <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>,
-      [BLOCKS.HEADING_2]: (node, children) => <h2 className="text-2xl font-semibold mb-4 mt-6 text-gray-900">{children}</h2>,
+      [BLOCKS.PARAGRAPH]: (node, children) => <p className="mb-4 text-gray-600 leading-relaxed">{children}</p>,
+      [BLOCKS.HEADING_2]: (node, children) => <h2 className="pd-h2">{children}</h2>,
       [INLINES.HYPERLINK]: (node, children) => (
-        <a href={node.data.uri} target="_blank" rel="noopener noreferrer" className="text-primary-orange hover:underline">
-          {children}
-        </a>
+        <a href={node.data.uri} target="_blank" rel="noopener noreferrer" className="text-accent-link hover:underline">{children}</a>
       ),
     },
   };
 
-  const renderButtons = (extraClasses = "") => (
-    <div className={`flex flex-col sm:flex-row gap-3 w-full ${extraClasses}`}>
+  const Buttons = ({ extra = "" }) => (
+    <div className={`flex flex-col sm:flex-row gap-3 ${extra}`}>
       {project.link && (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="project-btn-primary"
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline mr-2">
-            <path d="M8 1l7 7-7 7M1 8h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <a href={project.link} target="_blank" rel="noopener noreferrer" className="pd-btn-primary">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="inline mr-2">
+            <path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           Live Demo
         </a>
       )}
       {project.link2 && (
-        <a
-          href={project.link2}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="project-btn-secondary"
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline mr-2">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" fill="currentColor"/>
+        <a href={project.link2} target="_blank" rel="noopener noreferrer" className="pd-btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="inline mr-2">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
           </svg>
           GitHub
         </a>
@@ -70,137 +55,138 @@ export default function ProjectDetail({ project }) {
   return (
     <>
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-        .project-btn-primary {
+        .pd-wrap { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        .pd-back {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.82rem;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: #999;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          transition: color 0.2s ease, gap 0.2s ease;
+        }
+        .pd-back:hover { color: #FF6B6B; gap: 10px; }
+
+        .pd-title {
+          font-weight: 800;
+          font-size: clamp(1.8rem, 4vw, 2.8rem);
+          color: #333333;
+          line-height: 1.1;
+          text-align: center;
+        }
+
+        .pd-btn-primary {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          background: #FF6B35;
+          background: #FF6B6B;
           color: #fff;
           font-weight: 700;
-          font-size: 0.9rem;
-          padding: 12px 24px;
-          border-radius: 100px;
+          font-size: 0.875rem;
+          padding: 11px 22px;
+          border-radius: 10px;
           text-decoration: none;
-          transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-          box-shadow: 0 4px 16px rgba(255,107,53,0.3);
+          box-shadow: 0 4px 12px rgba(255,107,107,0.3);
+          transition: background 0.2s ease, transform 0.2s ease;
           white-space: nowrap;
         }
-        .project-btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(255,107,53,0.45);
-          background: #e85c2a;
-          color: #fff;
-          text-decoration: none;
-        }
-        .project-btn-secondary {
+        .pd-btn-primary:hover { background: #e05555; transform: translateY(-2px); color: #fff; text-decoration: none; }
+
+        .pd-btn-secondary {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           background: transparent;
-          color: #1a1a1a;
+          color: #333333;
           font-weight: 700;
-          font-size: 0.9rem;
-          padding: 11px 24px;
-          border-radius: 100px;
-          border: 2px solid #1a1a1a;
+          font-size: 0.875rem;
+          padding: 10px 22px;
+          border-radius: 10px;
+          border: 1.5px solid #ddd;
           text-decoration: none;
-          transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+          transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
           white-space: nowrap;
         }
-        .project-btn-secondary:hover {
-          background: #1a1a1a;
-          color: #fff;
-          transform: translateY(-2px);
-          text-decoration: none;
+        .pd-btn-secondary:hover { border-color: #333; color: #333; transform: translateY(-2px); text-decoration: none; }
+
+        .pd-card {
+          background: #fff;
+          border-radius: 16px;
+          padding: 24px;
+          box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+          border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .tech-badge {
+        .pd-h2 {
+          font-weight: 700;
+          font-size: 1.2rem;
+          color: #333333;
+          margin: 22px 0 10px;
+        }
+
+        .pd-tech-badge {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          background: rgba(255,107,53,0.08);
-          color: #c94e1e;
-          border: 1px solid rgba(255,107,53,0.2);
-          font-size: 0.8rem;
+          gap: 5px;
+          background: rgba(78,205,196,0.1);
+          border: 1px solid rgba(78,205,196,0.25);
+          color: #2a9d8f;
+          font-size: 0.78rem;
           font-weight: 600;
-          letter-spacing: 0.04em;
-          padding: 5px 12px;
+          padding: 4px 11px;
           border-radius: 100px;
-          transition: background 0.2s ease, border-color 0.2s ease;
         }
-        .tech-badge:hover {
-          background: rgba(255,107,53,0.15);
-          border-color: rgba(255,107,53,0.4);
-        }
-        .tech-badge::before {
+        .pd-tech-badge::before {
           content: '';
-          width: 6px;
-          height: 6px;
+          width: 5px; height: 5px;
           border-radius: 50%;
-          background: #FF6B35;
+          background: #4ECDC4;
           flex-shrink: 0;
         }
 
-        .back-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          color: #888;
-          font-size: 0.85rem;
-          font-weight: 600;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          text-decoration: none;
-          padding: 8px 0;
-          transition: color 0.2s ease, gap 0.2s ease;
-          background: none;
-          border: none;
-          cursor: pointer;
-        }
-        .back-btn:hover {
-          color: #FF6B35;
-          gap: 10px;
-        }
-
-        .gallery-item {
-          overflow: hidden;
+        .pd-gallery-item {
           border-radius: 12px;
-          box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          overflow: hidden;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .gallery-item:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-        }
+        .pd-gallery-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
 
-        .project-title {
-          font-family: 'Syne', sans-serif;
-          font-weight: 800;
+        .pd-section-label {
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #ccc;
         }
       `}</style>
 
-      <main className="flex-grow container mx-auto px-4 py-8 max-w-6xl">
+      <main className="pd-wrap flex-grow container mx-auto px-4 py-8 max-w-6xl">
 
-        {/* Back button */}
-        <button onClick={() => router.back()} className="back-btn mb-8">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <button onClick={() => router.back()} className="pd-back mb-7">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M9 11L5 7l4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           Tillbaka till projekt
         </button>
 
-        {/* Title */}
-        <h1 className="project-title text-4xl sm:text-5xl text-gray-900 mb-10 text-center">{project.titel}</h1>
+        <h1 className="pd-title mb-9">{project.titel}</h1>
 
-        {/* Main content */}
-        <div className="flex flex-col lg:flex-row lg:gap-10 mb-10 items-start">
+        <div className="flex flex-col lg:flex-row lg:gap-8 mb-8 items-start">
 
-          {/* Left: image + buttons */}
-          <div className="w-full lg:w-2/5 flex flex-col gap-5">
+          {/* Left */}
+          <div className="w-full lg:w-2/5 flex flex-col gap-4">
             {project.image?.fields?.file && (
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
                 <Image
                   src={`https:${project.image.fields.file.url}`}
                   alt={`${project.titel} screenshot`}
@@ -211,24 +197,22 @@ export default function ProjectDetail({ project }) {
                 />
               </div>
             )}
-            {renderButtons("hidden lg:flex")}
+            <Buttons extra="hidden lg:flex" />
           </div>
 
-          {/* Right: description + tech */}
-          <div className="w-full lg:w-3/5 mt-8 lg:mt-0 flex flex-col gap-5">
+          {/* Right */}
+          <div className="w-full lg:w-3/5 mt-6 lg:mt-0 flex flex-col gap-4">
             {project.ShortDescription && (
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 prose max-w-none text-base flex-grow">
+              <div className="pd-card flex-grow">
                 {documentToReactComponents(project.ShortDescription, richTextOptions)}
               </div>
             )}
-
-            {/* Tech badges */}
-            {project.technologiesUsed && project.technologiesUsed.length > 0 && (
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Teknologier</p>
+            {project.technologiesUsed?.length > 0 && (
+              <div className="pd-card">
+                <p className="pd-section-label mb-3">Teknologier</p>
                 <div className="flex flex-wrap gap-2">
                   {project.technologiesUsed.map((tech) => (
-                    <span key={tech} className="tech-badge">{tech}</span>
+                    <span key={tech} className="pd-tech-badge">{tech}</span>
                   ))}
                 </div>
               </div>
@@ -236,22 +220,20 @@ export default function ProjectDetail({ project }) {
           </div>
         </div>
 
-        {/* Mobile buttons */}
-        {renderButtons("flex lg:hidden mb-8")}
+        <Buttons extra="flex lg:hidden mb-8" />
 
-        {/* Gallery */}
-        {project.images && project.images.length > 0 && (
+        {project.images?.length > 0 && (
           <>
-            <div className="flex items-center gap-4 mb-6 mt-4">
-              <p className="text-xs font-bold uppercase tracking-widest text-gray-400">Galleri</p>
+            <div className="flex items-center gap-4 mb-5 mt-4">
+              <p className="pd-section-label">Galleri</p>
               <div className="flex-grow h-px bg-gray-100" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {project.images.map((image, index) => (
-                <div key={index} className="gallery-item relative w-full aspect-video bg-gray-50">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {project.images.map((image, i) => (
+                <div key={i} className="pd-gallery-item relative w-full aspect-video bg-gray-50">
                   <Image
                     src={`https:${image.fields.file.url}`}
-                    alt={`${project.titel} screenshot ${index + 1}`}
+                    alt={`${project.titel} screenshot ${i + 1}`}
                     fill
                     style={{ objectFit: 'contain' }}
                     sizes="(max-width: 768px) 100vw, 50vw"

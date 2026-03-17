@@ -4,293 +4,174 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export default function NotFound() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => { setVisible(true); }, []);
 
   return (
     <>
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-        @keyframes fadeSlideUp {
-          from { opacity: 0; transform: translateY(28px); }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(16px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes float404 {
-          0%   { transform: translateY(0px) rotate(-1deg); }
-          50%  { transform: translateY(-14px) rotate(1deg); }
-          100% { transform: translateY(0px) rotate(-1deg); }
+        @keyframes floatEmoji {
+          0%   { transform: translateY(0) rotate(-5deg); }
+          50%  { transform: translateY(-12px) rotate(5deg); }
+          100% { transform: translateY(0) rotate(-5deg); }
         }
         @keyframes glitch {
-          0%   { clip-path: inset(0 0 95% 0); transform: translate(-4px, 0); }
-          10%  { clip-path: inset(30% 0 50% 0); transform: translate(4px, 0); }
-          20%  { clip-path: inset(70% 0 10% 0); transform: translate(-4px, 0); }
-          30%  { clip-path: inset(10% 0 80% 0); transform: translate(0, 0); }
-          40%  { clip-path: inset(50% 0 30% 0); transform: translate(4px, 0); }
-          50%  { clip-path: inset(20% 0 60% 0); transform: translate(-4px, 0); }
-          60%  { clip-path: inset(80% 0 5%  0); transform: translate(4px, 0); }
-          70%  { clip-path: inset(5%  0 75% 0); transform: translate(-4px, 0); }
-          80%  { clip-path: inset(40% 0 40% 0); transform: translate(0, 0); }
-          90%  { clip-path: inset(60% 0 20% 0); transform: translate(4px, 0); }
+          0%   { clip-path: inset(0 0 95% 0); transform: translate(-3px, 0); }
+          15%  { clip-path: inset(25% 0 55% 0); transform: translate(3px, 0); }
+          30%  { clip-path: inset(65% 0 15% 0); transform: translate(-3px, 0); }
+          45%  { clip-path: inset(5% 0 80% 0); transform: translate(3px, 0); }
+          60%  { clip-path: inset(45% 0 35% 0); transform: translate(-3px, 0); }
+          75%  { clip-path: inset(75% 0 5% 0); transform: translate(3px, 0); }
           100% { clip-path: inset(0 0 95% 0); transform: translate(0, 0); }
-        }
-        @keyframes scanline {
-          0%   { transform: translateY(-100%); }
-          100% { transform: translateY(100vh); }
         }
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50%       { opacity: 0; }
         }
-        @keyframes orbit {
-          from { transform: rotate(0deg) translateX(90px) rotate(0deg); }
-          to   { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
-        }
-        @keyframes orbit2 {
-          from { transform: rotate(120deg) translateX(70px) rotate(-120deg); }
-          to   { transform: rotate(480deg) translateX(70px) rotate(-480deg); }
-        }
-        @keyframes orbit3 {
-          from { transform: rotate(240deg) translateX(110px) rotate(-240deg); }
-          to   { transform: rotate(600deg) translateX(110px) rotate(-600deg); }
-        }
-        @keyframes pulse-ring {
-          0%   { transform: scale(0.9); opacity: 0.6; }
-          50%  { transform: scale(1.1); opacity: 0.2; }
-          100% { transform: scale(0.9); opacity: 0.6; }
-        }
 
-        .not-found-root {
-          min-height: calc(100vh - 72px);
+        .nf-root {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          min-height: calc(100vh - 68px);
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 40px 20px;
-          background: #fafafa;
-          position: relative;
-          overflow: hidden;
+          padding: 40px 24px;
+          background: #F7F7F7;
+          text-align: center;
         }
 
-        /* Subtle grid background */
-        .not-found-root::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background-image:
-            linear-gradient(rgba(255,107,53,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,107,53,0.04) 1px, transparent 1px);
-          background-size: 40px 40px;
-          pointer-events: none;
+        .nf-emoji {
+          font-size: 4rem;
+          animation: floatEmoji 3s ease-in-out infinite;
+          margin-bottom: 24px;
+          display: block;
         }
 
-        /* Scanline effect */
-        .scanline {
-          position: absolute;
-          width: 100%;
-          height: 2px;
-          background: linear-gradient(90deg, transparent, rgba(255,107,53,0.15), transparent);
-          animation: scanline 4s linear infinite;
-          pointer-events: none;
-        }
-
-        /* Big glitchy 404 */
-        .num-404-wrap {
-          position: relative;
-          animation: float404 5s ease-in-out infinite;
-          margin-bottom: 8px;
-        }
-        .num-404 {
-          font-family: 'Syne', sans-serif;
+        .nf-404 {
           font-weight: 800;
-          font-size: clamp(7rem, 20vw, 14rem);
+          font-size: clamp(5rem, 18vw, 10rem);
           line-height: 1;
-          color: #1a1a1a;
+          color: #333333;
           position: relative;
           user-select: none;
+          margin-bottom: 4px;
         }
-        .num-404::before,
-        .num-404::after {
+        .nf-404::before, .nf-404::after {
           content: '404';
           position: absolute;
           inset: 0;
-          font-family: 'Syne', sans-serif;
           font-weight: 800;
         }
-        .num-404::before {
-          color: #FF6B35;
-          animation: glitch 3s infinite step-end;
-          animation-delay: 0.5s;
+        .nf-404::before {
+          color: #FF6B6B;
+          animation: glitch 3.5s infinite step-end;
+          animation-delay: 0.4s;
           z-index: -1;
         }
-        .num-404::after {
+        .nf-404::after {
           color: #4ECDC4;
-          animation: glitch 3s infinite step-end;
-          animation-delay: 1s;
+          animation: glitch 3.5s infinite step-end;
+          animation-delay: 1.2s;
           z-index: -2;
         }
 
-        /* Orbit graphic */
-        .orbit-wrap {
-          position: relative;
-          width: 240px;
-          height: 240px;
-          margin: 20px auto 32px;
-          flex-shrink: 0;
-        }
-        .orbit-center {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 56px;
-          height: 56px;
-          border-radius: 50%;
-          background: #FF6B35;
-          display: flex;
+        .nf-badge {
+          display: inline-flex;
           align-items: center;
-          justify-content: center;
-          font-size: 1.4rem;
-          box-shadow: 0 0 24px rgba(255,107,53,0.4);
+          gap: 7px;
+          background: rgba(255,107,107,0.08);
+          border: 1px solid rgba(255,107,107,0.2);
+          color: #c94a4a;
+          font-size: 0.78rem;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          padding: 5px 13px;
+          border-radius: 100px;
+          margin-bottom: 18px;
         }
-        .orbit-ring {
-          position: absolute;
-          top: 50%;
-          left: 50%;
+        .nf-badge-dot {
+          width: 5px; height: 5px;
           border-radius: 50%;
-          border: 1px solid rgba(255,107,53,0.15);
-          transform: translate(-50%, -50%);
-          animation: pulse-ring 3s ease-in-out infinite;
-        }
-        .orbit-ring-1 { width: 100px; height: 100px; animation-delay: 0s; }
-        .orbit-ring-2 { width: 160px; height: 160px; animation-delay: 0.5s; }
-        .orbit-ring-3 { width: 220px; height: 220px; animation-delay: 1s; }
-
-        .orbit-dot {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          margin: -5px 0 0 -5px;
-        }
-        .orbit-dot-1 {
-          background: #FF6B35;
-          animation: orbit 4s linear infinite;
-        }
-        .orbit-dot-2 {
-          background: #4ECDC4;
-          animation: orbit2 6s linear infinite;
-        }
-        .orbit-dot-3 {
-          background: #1a1a1a;
-          animation: orbit3 8s linear infinite;
+          background: #FF6B6B;
         }
 
-        .nf-label {
-          font-size: 0.75rem;
-          font-weight: 700;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #FF6B35;
-          animation: fadeSlideUp 0.5s ease forwards;
-          animation-delay: 0.1s;
-          opacity: 0;
-        }
         .nf-headline {
-          font-family: 'Syne', sans-serif;
           font-weight: 800;
-          font-size: clamp(1.5rem, 4vw, 2.2rem);
-          color: #1a1a1a;
-          text-align: center;
-          line-height: 1.2;
-          opacity: 0;
-          animation: fadeSlideUp 0.5s ease forwards;
-          animation-delay: 0.2s;
-          margin-bottom: 12px;
+          font-size: clamp(1.4rem, 4vw, 2rem);
+          color: #333333;
+          margin-bottom: 10px;
         }
         .nf-sub {
-          font-size: 1rem;
+          font-size: 0.95rem;
           color: #888;
-          text-align: center;
-          max-width: 360px;
-          line-height: 1.6;
-          opacity: 0;
-          animation: fadeSlideUp 0.5s ease forwards;
-          animation-delay: 0.3s;
+          max-width: 340px;
+          line-height: 1.65;
           margin-bottom: 32px;
         }
-        .nf-cta {
+
+        .nf-btn {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: #FF6B35;
+          background: #FF6B6B;
           color: #fff;
-          font-family: 'Syne', sans-serif;
           font-weight: 700;
-          font-size: 0.95rem;
-          letter-spacing: 0.04em;
-          padding: 14px 28px;
-          border-radius: 100px;
+          font-size: 0.9rem;
+          padding: 13px 26px;
+          border-radius: 10px;
           text-decoration: none;
-          box-shadow: 0 4px 20px rgba(255,107,53,0.35);
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-          opacity: 0;
-          animation: fadeSlideUp 0.5s ease forwards;
-          animation-delay: 0.4s;
+          box-shadow: 0 4px 14px rgba(255,107,107,0.3);
+          transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .nf-cta:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 10px 30px rgba(255,107,53,0.5);
+        .nf-btn:hover {
+          background: #e05555;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 22px rgba(255,107,107,0.4);
           color: #fff;
           text-decoration: none;
         }
-        .cursor-blink {
-          display: inline-block;
-          width: 3px;
-          height: 0.85em;
-          background: #FF6B35;
-          margin-left: 3px;
-          vertical-align: middle;
-          animation: blink 1s step-end infinite;
+
+        .nf-enter {
+          opacity: 0;
+          animation: fadeUp 0.5s ease forwards;
         }
       `}</style>
 
-      <div className="not-found-root">
-        <div className="scanline" />
+      <div className="nf-root">
+        <span className="nf-emoji">🔍</span>
 
-        {/* Glitchy 404 */}
-        <div className="num-404-wrap">
-          <div className="num-404">404</div>
+        <div className="nf-404">404</div>
+
+        <div className="nf-enter" style={{ animationDelay: '0.1s' }}>
+          <div className="nf-badge">
+            <span className="nf-badge-dot" />
+            Sidan hittades inte
+          </div>
         </div>
 
-        {/* Orbit animation */}
-        <div className="orbit-wrap">
-          <div className="orbit-ring orbit-ring-1" />
-          <div className="orbit-ring orbit-ring-2" />
-          <div className="orbit-ring orbit-ring-3" />
-          <div className="orbit-center">🔍</div>
-          <div className="orbit-dot orbit-dot-1" />
-          <div className="orbit-dot orbit-dot-2" />
-          <div className="orbit-dot orbit-dot-3" />
-        </div>
-
-        {/* Text */}
-        <p className="nf-label mb-3">Sidan hittades inte</p>
-        <h1 className="nf-headline">
-          Lost in the void<span className="cursor-blink" />
+        <h1 className="nf-headline nf-enter" style={{ animationDelay: '0.2s' }}>
+          Hoppsan, den här sidan existerar inte!
         </h1>
-        <p className="nf-sub">
-          Sidan du letar efter verkar inte existera — den kanske flyttades, togs bort, eller så var länken felaktig.
+
+        <p className="nf-sub nf-enter" style={{ animationDelay: '0.3s' }}>
+          Sidan du letar efter kan ha flyttats, tagits bort eller så var länken felaktig. Gå tillbaka till startsidan så hjälper jag dig rätt.
         </p>
 
-        <Link href="/" className="nf-cta">
-          Ta mig hem
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </Link>
+        <div className="nf-enter" style={{ animationDelay: '0.4s' }}>
+          <Link href="/" className="nf-btn">
+            Ta mig hem
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+              <path d="M3 7.5h9M8 4l3.5 3.5L8 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
+        </div>
       </div>
     </>
   );

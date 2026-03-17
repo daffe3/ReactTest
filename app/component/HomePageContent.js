@@ -9,236 +9,196 @@ const RotatingText = dynamic(() => import('./RotatingText'), { ssr: false });
 
 export default function HomePageContent({ homepage, taglines }) {
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => { setMounted(true); }, []);
 
   return (
     <>
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-        @keyframes float {
-          0%   { transform: translateY(0px) rotate(-1deg); }
-          50%  { transform: translateY(-12px) rotate(1deg); }
-          100% { transform: translateY(0px) rotate(-1deg); }
+        @keyframes floatImage {
+          0%   { transform: translateY(0px); }
+          50%  { transform: translateY(-10px); }
+          100% { transform: translateY(0px); }
         }
-        @keyframes fadeSlideUp {
-          from { opacity: 0; transform: translateY(32px); }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(18px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeSlideRight {
-          from { opacity: 0; transform: translateX(-24px); }
-          to   { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes scaleIn {
-          from { opacity: 0; transform: scale(0.92); }
-          to   { opacity: 1; transform: scale(1); }
-        }
-        @keyframes shimmer {
-          0%   { background-position: -200% center; }
-          100% { background-position: 200% center; }
-        }
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50%       { opacity: 0; }
-        }
 
-        .hero-label {
-          font-family: 'Syne', sans-serif;
-          font-size: 0.75rem;
-          letter-spacing: 0.25em;
-          text-transform: uppercase;
-          color: #FF6B35;
-          opacity: 0;
-          animation: fadeSlideRight 0.6s ease forwards;
-          animation-delay: 0.1s;
-        }
-        .hero-name {
-          font-family: 'Syne', sans-serif;
-          font-weight: 800;
-          line-height: 1.05;
-          opacity: 0;
-          animation: fadeSlideUp 0.7s ease forwards;
-          animation-delay: 0.25s;
-        }
-        .hero-tagline-wrap {
-          opacity: 0;
-          animation: fadeSlideUp 0.7s ease forwards;
-          animation-delay: 0.4s;
-        }
-        .hero-description {
-          opacity: 0;
-          animation: fadeSlideUp 0.7s ease forwards;
-          animation-delay: 0.55s;
-        }
-        .hero-cta {
-          opacity: 0;
-          animation: fadeSlideUp 0.7s ease forwards;
-          animation-delay: 0.7s;
-        }
-        .hero-image-wrap {
-          opacity: 0;
-          animation: scaleIn 0.9s ease forwards;
-          animation-delay: 0.3s;
-        }
+        .hero-wrap { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        .cta-primary {
+        .hero-badge {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: #FF6B35;
-          color: #fff;
-          font-family: 'Syne', sans-serif;
-          font-weight: 700;
-          font-size: 0.95rem;
+          background: rgba(255, 107, 107, 0.1);
+          border: 1px solid rgba(255, 107, 107, 0.25);
+          color: #c94a4a;
+          font-size: 0.8rem;
+          font-weight: 600;
           letter-spacing: 0.05em;
-          padding: 14px 28px;
+          padding: 6px 14px;
           border-radius: 100px;
-          text-decoration: none;
-          transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-          box-shadow: 0 4px 20px rgba(255, 107, 53, 0.35);
+          margin-bottom: 20px;
+          opacity: 0;
+          animation: fadeUp 0.5s ease forwards 0.1s;
         }
-        .cta-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 30px rgba(255, 107, 53, 0.5);
-          background: #e85c2a;
-          text-decoration: none;
-          color: #fff;
+        .hero-badge-dot {
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          background: #FF6B6B;
         }
 
-        .cta-secondary {
+        .hero-title {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 800;
+          font-size: clamp(2.2rem, 5vw, 3.5rem);
+          line-height: 1.12;
+          color: #333333;
+          margin-bottom: 16px;
+          opacity: 0;
+          animation: fadeUp 0.6s ease forwards 0.2s;
+        }
+
+        .hero-rotating-wrap {
+          margin-bottom: 20px;
+          opacity: 0;
+          animation: fadeUp 0.6s ease forwards 0.35s;
+        }
+
+        .hero-desc {
+          font-size: 1rem;
+          line-height: 1.75;
+          color: #666;
+          max-width: 460px;
+          margin-bottom: 32px;
+          opacity: 0;
+          animation: fadeUp 0.6s ease forwards 0.5s;
+        }
+
+        .hero-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: 40px;
+          opacity: 0;
+          animation: fadeUp 0.6s ease forwards 0.65s;
+        }
+
+        .btn-primary {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: #FF6B6B;
+          color: #fff;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 700;
+          font-size: 0.9rem;
+          padding: 13px 24px;
+          border-radius: 10px;
+          text-decoration: none;
+          box-shadow: 0 4px 14px rgba(255, 107, 107, 0.3);
+          transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-primary:hover {
+          background: #e05555;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 22px rgba(255, 107, 107, 0.4);
+          color: #fff;
+          text-decoration: none;
+        }
+
+        .btn-secondary {
           display: inline-flex;
           align-items: center;
           gap: 8px;
           background: transparent;
-          color: #1a1a1a;
-          font-family: 'Syne', sans-serif;
-          font-weight: 700;
-          font-size: 0.95rem;
-          letter-spacing: 0.05em;
-          padding: 13px 28px;
-          border-radius: 100px;
-          border: 2px solid #1a1a1a;
+          color: #333333;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 600;
+          font-size: 0.9rem;
+          padding: 12px 24px;
+          border-radius: 10px;
+          border: 1.5px solid #ddd;
           text-decoration: none;
-          transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+          transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
         }
-        .cta-secondary:hover {
-          background: #1a1a1a;
-          color: #fff;
+        .btn-secondary:hover {
+          border-color: #FF6B6B;
+          color: #FF6B6B;
           transform: translateY(-2px);
           text-decoration: none;
         }
 
-        .scroll-hint {
+        .hero-stats {
           display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 6px;
+          gap: 28px;
+          flex-wrap: wrap;
           opacity: 0;
-          animation: fadeSlideUp 0.6s ease forwards;
-          animation-delay: 1s;
+          animation: fadeUp 0.6s ease forwards 0.8s;
         }
-        .scroll-hint span {
-          font-size: 0.7rem;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #999;
-        }
-        .scroll-line {
-          width: 1px;
-          height: 48px;
-          background: linear-gradient(to bottom, #FF6B35, transparent);
-          animation: shimmer 2s ease-in-out infinite;
-        }
-
-        .hero-image-frame {
-          position: relative;
-          border-radius: 24px;
-          overflow: hidden;
-          animation: float 5s ease-in-out infinite;
-        }
-        .hero-image-frame::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: 24px;
-          box-shadow: inset 0 0 0 2px rgba(255, 107, 53, 0.25);
-          pointer-events: none;
-        }
-
-        .deco-dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background: #FF6B35;
-          display: inline-block;
-          margin-right: 10px;
-          vertical-align: middle;
-        }
-
-        .stat-item {
-          opacity: 0;
-          animation: fadeSlideUp 0.6s ease forwards;
-        }
-        .stat-number {
-          font-family: 'Syne', sans-serif;
-          font-size: 2rem;
+        .hero-stat-number {
+          font-family: 'Plus Jakarta Sans', sans-serif;
           font-weight: 800;
-          color: #FF6B35;
+          font-size: 1.6rem;
+          color: #FF6B6B;
           line-height: 1;
         }
-        .stat-label {
-          font-size: 0.75rem;
-          letter-spacing: 0.1em;
+        .hero-stat-label {
+          font-size: 0.7rem;
+          font-weight: 500;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
-          color: #888;
-          margin-top: 4px;
+          color: #aaa;
+          margin-top: 3px;
+        }
+        .hero-stat-divider {
+          width: 1px;
+          background: #e8e8e8;
+          align-self: stretch;
         }
 
-        .cursor-blink {
-          display: inline-block;
-          width: 3px;
-          height: 1em;
-          background: #FF6B35;
-          margin-left: 4px;
-          vertical-align: text-bottom;
-          animation: blink 1s step-end infinite;
+        .hero-image-wrap { animation: floatImage 4s ease-in-out infinite; }
+        .hero-image-frame {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 1;
+          border-radius: 24px;
+          overflow: hidden;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .hero-blob {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(70px);
+          pointer-events: none;
+          z-index: 0;
         }
       `}</style>
 
-      <div className="relative min-h-[calc(100vh-72px)] flex flex-col">
+      <div className="hero-wrap relative min-h-[calc(100vh-68px)] flex flex-col overflow-hidden">
 
-        {/* Subtle background texture */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: `radial-gradient(circle at 80% 20%, rgba(255,107,53,0.06) 0%, transparent 50%),
-                              radial-gradient(circle at 10% 80%, rgba(255,107,53,0.04) 0%, transparent 40%)`,
-            pointerEvents: 'none',
-            zIndex: 0,
-          }}
-        />
+        {/* Subtle colour blobs matching brand palette */}
+        <div className="hero-blob" style={{ width:380, height:380, background:'rgba(255,107,107,0.07)', top:-60, right:-80 }} />
+        <div className="hero-blob" style={{ width:280, height:280, background:'rgba(78,205,196,0.07)', bottom:40, left:-60 }} />
 
-        {/* Main hero */}
-        <div className="relative z-10 flex flex-col lg:flex-row flex-grow items-center px-6 lg:px-16 py-12 gap-12">
+        <div className="relative z-10 flex-grow flex flex-col lg:flex-row items-center gap-12 px-6 lg:px-16 py-14">
 
-          {/* Left: Text content */}
+          {/* Left: text */}
           <div className="lg:w-1/2 flex flex-col justify-center">
 
-            <p className="hero-label mb-4">
-              <span className="deco-dot" />
-              Portfolio
-            </p>
+            <div className="hero-badge">
+              <span className="hero-badge-dot" />
+              Frontend Developer · Göteborg
+            </div>
 
-            <h1 className="hero-name text-5xl sm:text-6xl lg:text-7xl text-gray-900 mb-4">
-              {homepage.title || 'David Arvidsson'}
-              <span className="cursor-blink" />
+            <h1 className="hero-title">
+              {homepage.title || 'Welcome to my code-gallery!'}
             </h1>
 
-            <div className="hero-tagline-wrap mb-6">
+            <div className="hero-rotating-wrap">
               <RotatingText
                 words={taglines}
                 interval={2500}
@@ -246,47 +206,45 @@ export default function HomePageContent({ homepage, taglines }) {
               />
             </div>
 
-            <p className="hero-description text-gray-600 text-lg leading-relaxed max-w-md mb-8">
+            <p className="hero-desc">
               {homepage.description ||
-                'Jag bygger snygga, funktionella webbupplevelser med fokus på detaljer och användarupplevelse.'}
+                'Nyutexaminerad frontend-utvecklare från ITHS Göteborg, specialiserad på React och TypeScript. Jag bygger snabba, tillgängliga webbupplevelser med fokus på ren kod och bra UX.'}
             </p>
 
-            <div className="hero-cta flex flex-wrap gap-4 mb-12">
-              <Link href="/projects" className="cta-primary">
+            <div className="hero-buttons">
+              <Link href="/projects" className="btn-primary">
                 Se mina projekt
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                  <path d="M3 7.5h9M8 4l3.5 3.5L8 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
-              <Link href="/contact" className="cta-secondary">
+              <Link href="/contact" className="btn-secondary">
                 Kontakta mig
               </Link>
             </div>
 
-            {/* Mini stats */}
-            <div className="flex gap-10">
+            <div className="hero-stats">
               {[
-                { number: '10+', label: 'Projekt', delay: '0.85s' },
-                { number: '3+', label: 'År erfarenhet', delay: '0.95s' },
-                { number: '100%', label: 'Passion', delay: '1.05s' },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="stat-item"
-                  style={{ animationDelay: stat.delay }}
-                >
-                  <div className="stat-number">{stat.number}</div>
-                  <div className="stat-label">{stat.label}</div>
-                </div>
+                { number: '2',  label: 'Praktikplatser' },
+                { number: '5+', label: 'Projekt' },
+                { number: '8+', label: 'Teknologier' },
+              ].map((stat, i) => (
+                <React.Fragment key={stat.label}>
+                  {i > 0 && <div className="hero-stat-divider" />}
+                  <div className="flex flex-col">
+                    <span className="hero-stat-number">{stat.number}</span>
+                    <span className="hero-stat-label">{stat.label}</span>
+                  </div>
+                </React.Fragment>
               ))}
             </div>
           </div>
 
-          {/* Right: Image */}
-          <div className="lg:w-1/2 flex flex-col justify-center items-center">
-            <div className="hero-image-wrap w-full max-w-md">
+          {/* Right: image */}
+          <div className="lg:w-1/2 flex justify-center items-center">
+            <div className="hero-image-wrap w-full max-w-sm lg:max-w-md">
               {homepage.image?.fields?.file ? (
-                <div className="hero-image-frame w-full aspect-square shadow-2xl">
+                <div className="hero-image-frame">
                   <Image
                     src={`https:${homepage.image.fields.file.url}`}
                     alt={homepage.image.fields.title || 'Profile'}
@@ -297,26 +255,14 @@ export default function HomePageContent({ homepage, taglines }) {
                   />
                 </div>
               ) : (
-                /* Placeholder when no image is available */
-                <div
-                  className="hero-image-frame w-full aspect-square shadow-2xl flex items-center justify-center"
-                  style={{ background: 'linear-gradient(135deg, #f5f5f5 0%, #ebebeb 100%)' }}
-                >
-                  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" opacity="0.3">
-                    <circle cx="40" cy="32" r="18" fill="#FF6B35"/>
-                    <ellipse cx="40" cy="70" rx="28" ry="16" fill="#FF6B35"/>
+                <div className="hero-image-frame" style={{ background:'#f5f5f5', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" opacity="0.15">
+                    <circle cx="40" cy="32" r="18" fill="#FF6B6B"/>
+                    <ellipse cx="40" cy="70" rx="28" ry="16" fill="#FF6B6B"/>
                   </svg>
                 </div>
               )}
             </div>
-          </div>
-        </div>
-
-        {/* Scroll hint */}
-        <div className="relative z-10 flex justify-center pb-8">
-          <div className="scroll-hint">
-            <span>Scrolla</span>
-            <div className="scroll-line" />
           </div>
         </div>
       </div>

@@ -15,69 +15,69 @@ export default function GooeyNav({ links = [], className = "" }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
+  useEffect(() => { setIsMobileMenuOpen(false); }, [pathname]);
 
   return (
     <>
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
         .nav-root {
           position: sticky;
           top: 0;
           z-index: 100;
-          transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
-          font-family: 'Syne', sans-serif;
+          background: #2C3E50;
+          transition: box-shadow 0.3s ease;
+          font-family: 'Plus Jakarta Sans', sans-serif;
         }
         .nav-root.scrolled {
-          background: rgba(26, 26, 26, 0.92) !important;
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          box-shadow: 0 1px 0 rgba(255,107,53,0.15), 0 4px 24px rgba(0,0,0,0.2);
+          box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .nav-logo {
+          font-weight: 800;
+          font-size: 1.05rem;
+          color: #fff;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: opacity 0.2s ease;
+        }
+        .nav-logo:hover { opacity: 0.85; text-decoration: none; color: #fff; }
+
+        /* Little coral pill behind the logo initials */
+        .nav-logo-pill {
+          background: #FF6B6B;
+          color: #fff;
+          font-weight: 800;
+          font-size: 0.75rem;
+          letter-spacing: 0.04em;
+          padding: 4px 9px;
+          border-radius: 6px;
+          line-height: 1;
         }
 
         .nav-link {
           position: relative;
           font-weight: 600;
           font-size: 0.875rem;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: rgba(255,255,255,0.7);
+          color: rgba(255,255,255,0.65);
           text-decoration: none;
-          padding: 8px 16px;
-          border-radius: 100px;
-          transition: color 0.2s ease;
-          outline: none;
-        }
-        .nav-link::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: 100px;
-          background: rgba(255, 107, 53, 0.15);
-          transform: scale(0.7);
-          opacity: 0;
-          transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+          padding: 7px 14px;
+          border-radius: 8px;
+          transition: color 0.2s ease, background 0.2s ease;
         }
         .nav-link:hover {
           color: #fff;
+          background: rgba(255,255,255,0.08);
           text-decoration: none;
         }
-        .nav-link:hover::before {
-          transform: scale(1);
-          opacity: 1;
-        }
         .nav-link.active {
-          color: #FF6B35;
+          color: #fff;
+          background: rgba(255,107,107,0.18);
         }
-        .nav-link.active::before {
-          background: rgba(255, 107, 53, 0.12);
-          transform: scale(1);
-          opacity: 1;
-        }
+        /* Coral underline dot for active */
         .nav-link.active::after {
           content: '';
           position: absolute;
@@ -87,113 +87,84 @@ export default function GooeyNav({ links = [], className = "" }) {
           width: 4px;
           height: 4px;
           border-radius: 50%;
-          background: #FF6B35;
+          background: #FF6B6B;
         }
 
-        .nav-logo {
-          font-family: 'Syne', sans-serif;
-          font-weight: 800;
-          font-size: 1.1rem;
-          letter-spacing: 0.02em;
-          color: #fff;
-          text-decoration: none;
-          transition: color 0.2s ease;
+        /* Teal accent on hover — uses secondary-orange (#4ECDC4) */
+        .nav-link:not(.active):hover::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 8px;
+          box-shadow: inset 0 -2px 0 rgba(78,205,196,0.5);
+          pointer-events: none;
+        }
+
+        /* Hamburger */
+        .hamburger {
           display: flex;
-          align-items: center;
-          gap: 8px;
+          flex-direction: column;
+          gap: 5px;
+          padding: 6px;
+          border-radius: 6px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          transition: background 0.2s ease;
         }
-        .nav-logo:hover {
-          color: #FF6B35;
-          text-decoration: none;
+        .hamburger:hover { background: rgba(255,255,255,0.08); }
+        .hamburger-line {
+          width: 22px; height: 2px;
+          background: rgba(255,255,255,0.8);
+          border-radius: 2px;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          transform-origin: center;
         }
-        .nav-logo-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: #FF6B35;
-          display: inline-block;
-          flex-shrink: 0;
-        }
+        .hamburger.open .hamburger-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.open .hamburger-line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+        /* Mobile menu */
         .mobile-menu {
           overflow: hidden;
           max-height: 0;
-          transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
           opacity: 0;
+          transition: max-height 0.35s ease, opacity 0.25s ease;
         }
-        .mobile-menu.open {
-          max-height: 400px;
-          opacity: 1;
-        }
+        .mobile-menu.open { max-height: 400px; opacity: 1; }
+
         .mobile-link {
           display: block;
-          padding: 12px 20px;
-          font-family: 'Syne', sans-serif;
+          padding: 11px 20px;
+          font-family: 'Plus Jakarta Sans', sans-serif;
           font-weight: 600;
           font-size: 0.9rem;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: rgba(255,255,255,0.7);
+          color: rgba(255,255,255,0.65);
           text-decoration: none;
           border-left: 2px solid transparent;
           transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
         }
         .mobile-link:hover {
           color: #fff;
-          background: rgba(255,107,53,0.08);
-          border-left-color: rgba(255,107,53,0.4);
+          background: rgba(255,255,255,0.05);
+          border-left-color: #4ECDC4;
           text-decoration: none;
         }
         .mobile-link.active {
-          color: #FF6B35;
-          border-left-color: #FF6B35;
-        }
-
-        .hamburger {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          cursor: pointer;
-          padding: 6px;
-          border-radius: 6px;
-          transition: background 0.2s ease;
-          background: none;
-          border: none;
-        }
-        .hamburger:hover {
-          background: rgba(255,255,255,0.08);
-        }
-        .hamburger-line {
-          width: 22px;
-          height: 2px;
-          background: rgba(255,255,255,0.85);
-          border-radius: 2px;
-          transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
-          transform-origin: center;
-        }
-        .hamburger.open .hamburger-line:nth-child(1) {
-          transform: translateY(7px) rotate(45deg);
-        }
-        .hamburger.open .hamburger-line:nth-child(2) {
-          opacity: 0;
-          transform: scaleX(0);
-        }
-        .hamburger.open .hamburger-line:nth-child(3) {
-          transform: translateY(-7px) rotate(-45deg);
+          color: #FF6B6B;
+          border-left-color: #FF6B6B;
         }
       `}</style>
 
-      <nav
-        className={`nav-root bg-text-dark ${scrolled ? 'scrolled' : ''} ${className}`}
-      >
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <nav className={`nav-root ${scrolled ? 'scrolled' : ''} ${className}`}>
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
 
           <Link href="/" className="nav-logo">
-            <span className="nav-logo-dot" />
+            <span className="nav-logo-pill">DA</span>
             David Arvidsson
           </Link>
 
-          {/* Desktop links */}
+          {/* Desktop */}
           <div className="hidden lg:flex items-center gap-1">
             {links.map((link) => (
               <Link
@@ -220,7 +191,7 @@ export default function GooeyNav({ links = [], className = "" }) {
 
         {/* Mobile menu */}
         <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-          <div className="container mx-auto px-4 pb-4 border-t border-white/10 pt-2">
+          <div className="container mx-auto px-4 pb-3 pt-1 border-t border-white/10">
             {links.map((link) => (
               <Link
                 key={link.id}
