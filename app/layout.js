@@ -15,19 +15,11 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'sv_SE',
-    url: 'https://davidarvidsson.se', // ← byt till din faktiska domän
+    url: 'https://david-portfolio-ruby-sigma.vercel.app', 
     siteName: 'David Arvidsson',
     title: 'David Arvidsson — Frontend Developer',
     description:
       'Portfolio för David Arvidsson — frontend-utvecklare med fokus på moderna webbupplevelser, React och Next.js.',
-    images: [
-      {
-        url: '/og-image.png', // ← lägg till en 1200×630px bild i /public
-        width: 1200,
-        height: 630,
-        alt: 'David Arvidsson — Frontend Developer',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
