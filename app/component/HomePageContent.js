@@ -178,7 +178,7 @@ export default function HomePageContent({ homepage, taglines }) {
         }
       `}</style>
 
-      <div className="hero-wrap relative min-h-[calc(100vh-68px)] flex flex-col overflow-hidden">
+      <div className="hero-wrap relative flex flex-col overflow-hidden">
 
         {/* Subtle colour blobs matching brand palette */}
         <div className="hero-blob" style={{ width:380, height:380, background:'rgba(255,107,107,0.07)', top:-60, right:-80 }} />
